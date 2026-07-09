@@ -4,7 +4,7 @@ Aplicação de lista de tarefas desenvolvida do zero com HTML5, CSS3 e JavaScrip
 
 ## 🔗 Acesse
 
-👉 [arthurlaurentis1.github.io/Lista-tarefas.ArthurLaurentis](https://arthurlaurentis1.github.io/Lista-tarefas.ArthurLaurentis)
+👉 https://arthurlaurentis1.github.io/ListaTarefas.ArthurLaurentis/
 
 ## 🛠️ Tecnologias utilizadas
 
