@@ -1,0 +1,210 @@
+/* Fontes: Poppins pros títulos e botões, Inter pro texto normal */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap");
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;     
+    height: 100vh;
+    margin: 0;
+    background-color: #2C1B15; 
+}
+
+/* Card principal onde fica tudo */
+.container {
+    text-align: center;
+    background-color: #D6C7B4;
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    width: 90%;
+    max-width: 600px;
+    border: 2px solid #9A8B7C;
+}
+
+h1 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #2C1B15;
+    margin-bottom: 4px;
+}
+
+p {
+    color: #5C4A3E;
+    font-size: 1.05em;
+    margin-top: 0;
+}
+
+/* Mensagem que aparece quando adiciona/limpa/erra a tarefa */
+#mensagem {
+    color: #7A5C22;
+    font-weight: 600;
+    font-size: 0.9em;
+    min-height: 1.2em; /* pra não "pular" o layout quando o texto muda */
+    margin-top: 16px;  
+    transition: opacity 0.2s ease;
+}
+
+/* Campo de digitar a tarefa */
+input[type="text"] {
+    font-family: "Inter", sans-serif;
+    padding: 11px 14px;
+    width: 80%;
+    max-width: 500px;
+    margin-top: 10px;
+    margin-bottom: 18px;
+    border: 2px solid #9A8B7C;
+    border-radius: 6px;
+    font-size: 1em;
+    background-color: #F4F0EA;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.08);
+    outline: none;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+input[type="text"]:focus {
+    border-color: #8A5A2C;
+    box-shadow: inset 0 2px 4px rgba(138, 90, 44, 0.25), 0 0 0 3px rgba(138, 90, 44, 0.12);
+}
+
+/* Botões principais (Adicionar Tarefa e Limpar tudo) */
+button {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    background-color: #6E7A4A;
+    color: #F4F0EA;
+    padding: 10px 22px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: background-color 0.25s ease, transform 0.15s ease, box-shadow 0.25s ease;
+    margin-top: 14px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+button:hover {
+    background-color: #869359;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: translateY(0); /* volta ao normal quando clica */
+}
+
+/* Contorno de foco pra quem navega pelo teclado */
+button:focus-visible {
+    outline: 2px solid #8A5A2C;
+    outline-offset: 2px;
+}
+
+
+.botao_lista {
+    background-color: #9C4B3F;
+}
+
+.botao_lista:hover {
+    background-color: #7A342A;
+    color: #F4F0EA;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+/* Animação de entrada: a tarefa nasce com um fade + um leve deslize pra cima */
+@keyframes entrada_tarefa {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Cada tarefa da lista */
+ul li {
+    background-color: #F4F0EA;
+    color: #2C1B15;
+    padding: 10px 14px; /* mais enxuto */
+    margin: 5px 0;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+    animation: entrada_tarefa 0.25s ease;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 56px; /* card mais baixo, mais enxuto */
+    position: relative; /* precisa disso pra posicionar o X e o Editar */
+    overflow: visible;  /* deixa o X "vazar" um pouco pra fora do card */
+    font-size: 0.92em;
+    transition: box-shadow 0.2s ease;
+}
+
+ul li:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+}
+
+/* Botão de remover (X): uma bolinha vermelha saindo um pouco no canto de cima */
+button.remover {
+    background-color: #C1443C;
+    color: #F4F0EA;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    font-size: 11px;
+    font-weight: 700;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+    transition: background-color 0.2s ease;
+
+    position: absolute;
+    right: -8px;
+    top: -10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+button.remover:hover {
+    background-color: #8F2F28;
+}
+
+/* Botão de editar: fica discreto, no cantinho de baixo da tarefa */
+button.editar {
+    background-color: transparent;
+    color: #2C1B15;
+    border: 1.5px solid #2C1B15;
+    padding: 4px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.72rem;
+    font-weight: 600;
+    margin: 0;
+    box-shadow: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    position: absolute;
+    right: 6px;
+    bottom: 6px;
+}
+
+button.editar:hover {
+    background-color: #2C1B15;
+    color: #F4F0EA;
+}
